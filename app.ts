@@ -3,7 +3,11 @@
 // implementar la funciona sumArr que recibe un arreglo de numeros y retorna 
 // la suma de todos los elementos del arreglo
 function sumaArr(arr) {
-    
+    let suma = 0;
+    for(let i = 0; i < arr.length; i++){
+        suma += arr[i];
+    }
+    return suma;
 }
 
 
@@ -13,7 +17,29 @@ function sumaArr(arr) {
 // y retorna un arreglo con los elementos que son mayores al numero recibido
 
 function mayores(arr, num) {
-   
+   /*con PUSH
+   function mayores1(arr, num) {
+    var arrf = [];
+    for(var i = 0; i <= arr.length; i++){
+        if(arr[i] > num){
+            arrf.push(arr[i]);
+        }
+    }
+    return arrf;   
+    }*/
+    /*con MAP
+    function mayores2(arr, num) {
+        var arrf = arr.map((elemento) => {
+            if (elemento > num){
+            return elemento;
+            }
+        });
+        return arrf;
+    }*/
+
+    // con FILTER
+    var arr4 = arr.filter((elemento) => elemento > num);
+   return arr4; 
 }
 
 
@@ -31,20 +57,26 @@ function mayores(arr, num) {
 // que son mayores al numero recibido
 
 function mayoresEdad(personas, num) {
+    var mayores = personas.filter((elemento) => elemento.edad > num);
+    return mayores;
 }
 
 
 // con el arreglo anterior calcular la media de las edades de las personas
 // a la funcion mediaEdad le llega el arreglo de personas y retorna la media de las edades
 function mediaEdad(personas) {
-
+    var sumaEdad = personas.reduce((acc,elemento) => acc + elemento.edad, 0);
+    var media = sumaEdad/personas.length;
+    return media;
 }
 
 
 // implementar la function mayores o iguales a la media usando el array anterior.
 function mayoresIgualMedia(personas) {
-
-   
+    var sumaEdad = personas.reduce((acc,elemento) => acc + elemento.edad, 0);
+    var media = sumaEdad/personas.length;
+    var mayoresigualMedia = personas.filter((elemento) => elemento.edad >= media);
+    return mayoresigualMedia;   
 }
 
 
